@@ -1,0 +1,59 @@
+/**
+ * This source code is the confidential, proprietary information of
+ * Mi aguila, you may not disclose such information,
+ * and may only use it in accordance with the terms of the license
+ * agreement you entered into with Mi aguila.
+ *
+ * Mi aguila
+ * All Rights Reserved.
+ */
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+  background: $graySidebar;
+
+  .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+    background-color: $grayLight;
+    padding: 20px 10px;
+    text-align: center;
+
+    img {
+      width: 100%;
+      max-width: 140px;
+    }
+  }
+
+  .list-group {
+    width: 15rem;
+
+    a {
+      background: $graySidebar;      
+      padding-left: 30px;
+      display: flex;
+      align-items: center;
+      border: none;
+      color: #e5e5e5;
+
+      svg {
+        vertical-align: middle;
+      }
+
+      span {
+        margin-left: 10px;
+      }
+    }
+
+    a.active {
+      background-color: $grayActive;
+      color: #fff;
+      border-left: 1px solid #fff;
+    }
+  }
+}
