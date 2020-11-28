@@ -11,8 +11,13 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import MoonLoader from "react-spinners/MoonLoader";
-import { Link } from "react-router-dom";
+
+// components
+import LoginForm from '../../components/forms/Login';
+
+// Assets
+import '../../assets/css/login.scss';
+import Logo from '../../assets/img/logo.svg';
 
 /**
  * @file index.js
@@ -20,20 +25,27 @@ import { Link } from "react-router-dom";
  * @description Login view page
  */
 
-function Login({ globalAction, loading }) {
-  const { setLoading } = globalAction;
+function Login() {
+  // const { setLoading } = globalAction;
 
   return (
-    <div className="App">
-      <MoonLoader
-        size={150}
-        color={"red"}
-        loading={loading}
-      />
-      <button onClick={() => setLoading(!loading)}>Set loading Login</button>
-      <br />
-      <Link to="/home">Go to home</Link>
-    </div>
+    <section className="h-100">
+      <div className="container h-100">
+        <div className="row justify-content-md-center h-100">
+          <div className="card-wrapper">
+            <div className="brand">
+              <img src={Logo} alt="logo" />
+            </div>
+            <div className="card fat">
+              <div className="card-body">
+							<h4 className="card-title">Login</h4>
+              <LoginForm />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -43,6 +55,5 @@ Login.propTypes = {
   }).isRequired,
   loading: PropTypes.bool,
 }
-
 
 export default Login;
