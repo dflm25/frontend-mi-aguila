@@ -1,0 +1,39 @@
+/**
+ * This source code is the confidential, proprietary information of
+ * Mi aguila, you may not disclose such information,
+ * and may only use it in accordance with the terms of the license
+ * agreement you entered into with Mi aguila.
+ *
+ * Mi aguila
+ * All Rights Reserved.
+ */
+
+.navbar {
+  border-bottom: none !important;
+  background: transparent !important;
+
+  .breadcrumbs {
+    color: $blueTitle;
+    font-size: 1.4em;
+    font-weight: 600;
+    text-shadow: 1px 1px 1px rgba(39, 65, 93, 1);
+  }
+
+  svg {
+    color: $grayText;
+  }
+
+  .user-picture{
+    max-width: 32px;
+    border-radius: 50%;
+    border: 1px solid $grayText;
+    padding: 2px;
+  }
+
+  .user-name {
+    color: $blueTitle;
+    border-left: 1px solid $grayLight;
+    padding-left: 10px;
+    padding-right: 20px;
+  }
+}

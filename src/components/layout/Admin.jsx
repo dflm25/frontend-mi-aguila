@@ -12,10 +12,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Components
-import AdminLayout from '../../components/layout/Admin';
+import SideBar from './SideBar';
+import Header from './Header';
 
 // Assets
-import Background from '../../assets/img/inicio.png';
+import '../../assets/css/admin.scss';
 
 /**
  * @file index.js
@@ -23,22 +24,22 @@ import Background from '../../assets/img/inicio.png';
  * @description Home view page
  */
 
-function Home() {
+function Admin ({ children }) {
   return (
-    <AdminLayout>
-      <div className="home-content">
-        <img src={Background} alt="Bienvenido" className="welcome-image" />
+    <div className="d-flex" id="wrapper">
+      <SideBar />
+      <div id="page-content-wrapper">
+        <Header />
+        <div className="container-fluid">
+          {children}
+        </div>
       </div>
-    </AdminLayout>
+    </div>
   );
 }
 
-Home.propTypes = {
-  globalAction: PropTypes.shape({
-    setLoading: PropTypes.func,
-  }).isRequired,
-  loading: PropTypes.bool,
+Admin.propTypes = {
+  children: PropTypes.array,
 }
 
-
-export default Home;
+export default Admin;
