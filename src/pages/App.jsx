@@ -9,55 +9,32 @@
  * All Rights Reserved.
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import MoonLoader from "react-spinners/MoonLoader";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-// Redux
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as actions from '../redux/actions/global';
+// Pages
+import Login from '../pages/login';
+import Home from '../pages/home';
 
-function App({ globalAction, loading }) {
-  const { setLoading } = globalAction;
+/**
+ * @file index.js
+ * @author Daniel Felipe Lucumi Marin
+ * @description Redux store.
+ */
 
+function App () {
   return (
-    <div className="App">
-      <MoonLoader
-        size={150}
-        color={"red"}
-        loading={loading}
-      />
-      <button onClick={() => setLoading(!loading)}>Set loading</button>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/home">
+          <Home />
+        </Route>
+        <Route path="/">
+          <Login />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
-App.propTypes = {
-  globalAction: PropTypes.shape({
-    setLoading: PropTypes.func,
-  }).isRequired,
-  loading: PropTypes.bool,
-}
-
-/**
- * Map state to props
- * @returns { object }
- */
-export const mapStateToProps = (state) => ({
-  loading: state.Global.loading,
-});
-
-/**
- * Map dispatch to props
- * @param dispatch - Run the  process to execute in the action
- * @returns { object }
- */
-export const mapDispatchToProps = (dispatch) => ({
-  globalAction: bindActionCreators(actions, dispatch),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(App);
+export default App;
