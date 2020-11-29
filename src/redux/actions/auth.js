@@ -8,9 +8,7 @@
  * All Rights Reserved.
  */
 
-import { combineReducers } from 'redux';
-import Global from './Global';
-import Auth from './Auth';
+import { AUTH_LOGOUT, AUTH_LOGIN } from '../constants';
 
 /**
  * @file index.js
@@ -18,9 +16,15 @@ import Auth from './Auth';
  * @description Redux store.
  */
 
-const RootReducer = combineReducers({ 
-  Global,
-  Auth
-});
+export function authLogin(payload) {
+  return {
+    type: AUTH_LOGIN,
+    payload,
+  };
+}
 
-export default RootReducer;
+export function authLogout() {
+  return {
+    type: AUTH_LOGOUT,
+  };
+}
