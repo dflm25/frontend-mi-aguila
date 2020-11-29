@@ -9,15 +9,17 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FaSearch, FaBell } from "react-icons/fa";
 
 // Assets
 import Picture from '../../assets/img/user.png';
 
-function Header () {
+function Header ({ title, tasks }) {
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-      <span className="breadcrumbs">Inicio</span>
+      <span className="breadcrumbs">{title}</span>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -29,6 +31,7 @@ function Header () {
           <li className="nav-item">
             <a className="nav-link" href="#">
               <FaBell color="#C5C7CD" size={24} />
+              {tasks.length > 0 ? <span>{tasks.length}</span> : null}
             </a>
           </li>
           <li className="nav-item dropdown">
@@ -47,7 +50,8 @@ function Header () {
 }
 
 Header.propTypes = {
-
+  title: PropTypes.string,
+  tasks: PropTypes.array,
 }
 
 export default Header;

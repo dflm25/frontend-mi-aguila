@@ -12,11 +12,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Components
-import SideBar from './SideBar';
-import Header from './Header';
+import SideBar from '../components/layout/SideBar';
+import Header from '../components/layout/Header';
 
 // Assets
-import '../../assets/css/admin.scss';
+import '../assets/css/admin.scss';
 
 /**
  * @file index.js
@@ -24,12 +24,13 @@ import '../../assets/css/admin.scss';
  * @description Home view page
  */
 
-function Admin ({ children }) {
+function Admin (props) {
+  const { children } = props;
   return (
     <div className="d-flex" id="wrapper">
       <SideBar />
       <div id="page-content-wrapper">
-        <Header />
+        <Header {...props}/>
         <div className="container-fluid">
           {children}
         </div>
@@ -39,7 +40,7 @@ function Admin ({ children }) {
 }
 
 Admin.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.object,
 }
 
 export default Admin;

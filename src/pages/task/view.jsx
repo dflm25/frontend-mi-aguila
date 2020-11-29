@@ -13,7 +13,7 @@ import PropTypes from 'prop-types';
 import swal from 'sweetalert';
 
 // Components
-import AdminLayout from '../../components/layout/Admin';
+import AdminLayout from '../../layout';
 import TaskForm from '../../components/forms/Todo';
 import TaskList from '../../components/taskList';
 
