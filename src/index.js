@@ -10,7 +10,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './pages/App';
+import Routes from './routes';
 import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
 
@@ -18,7 +18,7 @@ import store from './redux/store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Routes />
   </Provider>,
   document.getElementById('root')
 );
