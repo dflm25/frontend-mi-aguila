@@ -22,13 +22,13 @@ function SideBar () {
         <img src={Logo} alt="Mi aguila"/>
       </div>
       <div className="list-group list-group-flush">
-        <Link to="#" className="list-group-item list-group-item-action active">
+        <Link to="/home" className="list-group-item list-group-item-action active">
           <FaHome /> <span>Inicio</span>
         </Link>
-        <Link href="#" className="list-group-item list-group-item-action">
+        <Link to="/users" className="list-group-item list-group-item-action">
           <FaUsers /> <span>Usuarios</span>
         </Link>
-        <Link href="#" className="list-group-item list-group-item-action">
+        <Link href="/task" className="list-group-item list-group-item-action">
           <FaTasks /> <span>Tareas</span>
         </Link>
       </div>

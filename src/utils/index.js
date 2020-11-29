@@ -7,3 +7,22 @@
  * Mi aguila
  * All Rights Reserved.
  */
+
+/**
+ * @file index.js
+ * @author Daniel Felipe Lucumi Marin
+ * @description Home view page
+ */
+
+/**
+ * @return sorted array of objects
+ */
+export const arraySort = (a, b) => {
+  if ( a.first_name < b.first_name ){
+    return -1;
+  }
+  if ( a.first_name > b.first_name ){
+    return 1;
+  }
+  return 0;
+}

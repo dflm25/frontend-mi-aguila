@@ -15,6 +15,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Pages
 import Login from '../pages/login';
 import Home from '../pages/home';
+import User from '../pages/user';
 
 /**
  * @file index.js
@@ -28,6 +29,9 @@ function App () {
       <Switch>
         <Route path="/home">
           <Home />
+        </Route>
+        <Route path="/users">
+          <User />
         </Route>
         <Route path="/">
           <Login />
