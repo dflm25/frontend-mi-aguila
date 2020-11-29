@@ -16,6 +16,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from '../pages/login';
 import Home from '../pages/home';
 import User from '../pages/user';
+import Task from '../pages/task';
 
 /**
  * @file index.js
@@ -32,6 +33,9 @@ function App () {
         </Route>
         <Route path="/users">
           <User />
+        </Route>
+        <Route path="/tasks">
+          <Task />
         </Route>
         <Route path="/">
           <Login />

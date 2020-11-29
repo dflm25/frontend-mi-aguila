@@ -28,7 +28,7 @@ function SideBar () {
         <Link to="/users" className="list-group-item list-group-item-action">
           <FaUsers /> <span>Usuarios</span>
         </Link>
-        <Link href="/task" className="list-group-item list-group-item-action">
+        <Link to="/tasks" className="list-group-item list-group-item-action">
           <FaTasks /> <span>Tareas</span>
         </Link>
       </div>

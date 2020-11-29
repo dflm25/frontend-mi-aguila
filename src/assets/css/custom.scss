@@ -47,3 +47,47 @@ body {
     margin-left: -15rem;
   }
 }
+
+.btn-task {
+  height: 38px;
+  line-height: 0.5em;
+  font-size: 1em !important;
+}
+
+ul.todo {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+
+  li.checked {
+    text-decoration: line-through;
+  }
+
+  li {
+    cursor: pointer;
+    position: relative;
+    padding: 8px 4px 6px 20px;
+    list-style-type: none;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+    
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  li:nth-child(odd) {
+    background: #F7F7FC;
+  }
+
+  .controls {
+    float: right;
+
+    svg {
+      margin: 5px;
+    }
+  }
+}

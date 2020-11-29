@@ -11,6 +11,7 @@
 import { combineReducers } from 'redux';
 import Global from './Global';
 import Auth from './Auth';
+import Task from './Task';
 
 /**
  * @file index.js
@@ -20,7 +21,8 @@ import Auth from './Auth';
 
 const RootReducer = combineReducers({ 
   Global,
-  Auth
+  Auth,
+  Task
 });
 
 export default RootReducer;
