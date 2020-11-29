@@ -7,8 +7,3 @@
  * Mi aguila
  * All Rights Reserved.
  */
-
-export const SET_LOADING = 'SET_LOADING';
-export const AUTH_LOGIN = 'AUTH_LOGIN';
-export const AUTH_LOGOUT = 'AUTH_LOGOUT';
-export const AUTH_CHECK = 'AUTH_CHECK';
