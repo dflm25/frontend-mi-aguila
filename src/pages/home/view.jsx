@@ -12,7 +12,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Components
-import AdminLayout from '../../components/layout/Admin';
+import AdminLayout from '../../layout';
 
 // Assets
 import Background from '../../assets/img/inicio.png';
@@ -25,7 +25,7 @@ import Background from '../../assets/img/inicio.png';
 
 function Home() {
   return (
-    <AdminLayout>
+    <AdminLayout title="Inicio">
       <div className="home-content">
         <img src={Background} alt="Bienvenido" className="welcome-image" />
       </div>

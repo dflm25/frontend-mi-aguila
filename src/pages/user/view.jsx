@@ -12,7 +12,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 // Components
-import AdminLayout from '../../components/layout/Admin';
+import AdminLayout from '../../layout';
 import Datatable from '../../components/datatable';
 
 // Services
