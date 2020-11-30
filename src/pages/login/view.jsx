@@ -31,7 +31,7 @@ import * as auth from '../../services/auth';
  * @description Login view page
  */
 
-function Login({ globalAction, isAuthenticated }) {
+function Login({ globalAction, isAuthenticated, loading }) {
   const { setLoading } = globalAction;
   const dispatch = useDispatch();
 
@@ -42,8 +42,9 @@ function Login({ globalAction, isAuthenticated }) {
       const response = await dispatch(auth.login(data));
       if (response === 'error') {
         swal("Ups!", "Ha ocurrido un error, intentalo de nuevo!", "error");
+      } else {
+        setLoading(false);
       }
-      setLoading(true);
     }, 2000);
   }
 
@@ -65,7 +66,7 @@ function Login({ globalAction, isAuthenticated }) {
             <div className="card fat">
               <div className="card-body">
 							<h4 className="card-title">Login</h4>
-              <LoginForm submitForm={submitForm} />
+              <LoginForm submitForm={submitForm} loading={loading} />
               </div>
             </div>
           </div>
