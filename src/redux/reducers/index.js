@@ -9,6 +9,7 @@
  */
 
 import { combineReducers } from 'redux';
+import persistStore from './persistStore';
 import Global from './Global';
 import Auth from './Auth';
 import Task from './Task';
@@ -22,7 +23,8 @@ import Task from './Task';
 const RootReducer = combineReducers({ 
   Global,
   Auth,
-  Task
+  Task,
+  persistStore
 });
 
 export default RootReducer;

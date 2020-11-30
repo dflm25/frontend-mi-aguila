@@ -14,6 +14,9 @@ import PropTypes from 'prop-types';
 // Components
 import AdminLayout from '../../layout';
 
+// Utils
+import { getUserData } from '../../utils';
+
 // Assets
 import Background from '../../assets/img/inicio.png';
 
@@ -24,9 +27,12 @@ import Background from '../../assets/img/inicio.png';
  */
 
 function Home() {
+  
   return (
     <AdminLayout title="Inicio">
       <div className="home-content">
+        <h1 className="text-center">Bienvenido {getUserData().name}</h1>
+        <br />
         <img src={Background} alt="Bienvenido" className="welcome-image" />
       </div>
     </AdminLayout>

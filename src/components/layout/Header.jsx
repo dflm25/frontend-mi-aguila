@@ -8,14 +8,22 @@
  * All Rights Reserved.
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FaSearch, FaBell } from "react-icons/fa";
+
+// Utils
+import { getUserData } from '../../utils';
 
 // Assets
 import Picture from '../../assets/img/user.png';
 
-function Header ({ title, tasks }) {
+function Header ({ title, tasks, authAction }) {
+  const [menu, setMenu] = useState('');
+
+  const logOut = () => {
+    authAction.authLogout();
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom">
@@ -35,12 +43,12 @@ function Header ({ title, tasks }) {
             </a>
           </li>
           <li className="nav-item dropdown">
-            <a className="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span className="user-name">Pedro perez</span> 
+            <a className="nav-link" onClick={()=>setMenu(!menu)} id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span className="user-name">{getUserData().name}</span> 
               <img src={Picture} className="user-picture"/>
             </a>
-            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a className="dropdown-item" href="#">Salir</a>
+            <div className={`dropdown-menu dropdown-menu-right ${menu ? 'show' : ''}`} aria-labelledby="navbarDropdown">
+              <a className="dropdown-item" onClick={logOut}>Salir</a>
             </div>
           </li>
         </ul>
@@ -52,6 +60,9 @@ function Header ({ title, tasks }) {
 Header.propTypes = {
   title: PropTypes.string,
   tasks: PropTypes.array,
+  authAction: PropTypes.shape({
+    authLogout: PropTypes.func,
+  }).isRequired
 }
 
 export default Header;
