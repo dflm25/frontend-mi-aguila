@@ -5,6 +5,17 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   background: #F7F7FC;
+
+  .notification-counter {
+    background: red;
+    color: #fff;
+    font-size: 0.7em;
+    border-radius: 5px;
+    padding: 5px;
+    height: 6px;
+    width: 6px;
+    font-weight: 400;
+  }
 }
 
 .home-content {

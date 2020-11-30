@@ -39,7 +39,7 @@ function Header ({ title, tasks, authAction }) {
           <li className="nav-item">
             <a className="nav-link" href="#">
               <FaBell color="#C5C7CD" size={24} />
-              {tasks.length > 0 ? <span>{tasks.length}</span> : null}
+              {tasks.length > 0 ? <span className="notification-counter">{tasks.length}</span> : null}
             </a>
           </li>
           <li className="nav-item dropdown">
