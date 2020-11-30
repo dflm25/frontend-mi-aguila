@@ -10,12 +10,14 @@
  */
 
 import * as action from '../redux/actions/auth';
+import moment from 'moment';
 
 export const login = (params) => {
   return dispatch => (
     new Promise((resolve, reject) => {
       if (params) {
-        dispatch(action.authLogin(params));
+        const data = Object.assign(params, { name: 'Daniel Lucumi', active: moment() });
+        dispatch(action.authLogin(data));
         resolve('success');
       } else {
         reject('error');

@@ -8,7 +8,6 @@
  * All Rights Reserved.
  */
 
-import { AUTH_LOGOUT, AUTH_LOGIN, AUTH_UPDATE_TIME } from '../constants';
 
 /**
  * @file index.js
@@ -16,21 +15,18 @@ import { AUTH_LOGOUT, AUTH_LOGIN, AUTH_UPDATE_TIME } from '../constants';
  * @description Redux store.
  */
 
-export function authLogin(payload) {
-  return {
-    type: AUTH_LOGIN,
-    payload,
-  };
+function persistStore(state, payload) {
+  const stateObj = Object.assign({}, state, payload);
+  return stateObj;
 }
 
-export function authLogout() {
-  return {
-    type: AUTH_LOGOUT,
-  };
-}
+const reducer = (state = {}, { type, payload = null }) => {
+  switch (type) {
+    case 'persist/REHYDRATE':
+      return persistStore(state, payload);
+    default:
+      return state;
+  }
+};
 
-export function updateTimeSession() {
-  return {
-    type: AUTH_UPDATE_TIME,
-  };
-}
+export default reducer;

@@ -8,7 +8,8 @@
  * All Rights Reserved.
  */
 
-import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_CHECK } from '../constants';
+import moment from 'moment';
+import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_CHECK, AUTH_UPDATE_TIME } from '../constants';
 
 /**
  * @file index.js
@@ -23,15 +24,13 @@ const defaultUser = {
 };
 
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated: !!localStorage.getItem('user'),
   user: defaultUser,
 };
 
 const authLogin = (state, payload) => {
   localStorage.setItem('user', JSON.stringify(payload));
-  // Http.defaults.headers.common.Authorization = `Bearer ${AccessToken}`;
-  // localStorage.setItem('access_token', AccessToken);
-
+  
   const stateObj = Object.assign({}, state, {
     isAuthenticated: true,
     user: payload,
@@ -41,17 +40,13 @@ const authLogin = (state, payload) => {
 
 const checkAuth = (state) => {
   const stateObj = Object.assign({}, state, {
-    isAuthenticated: !!localStorage.getItem('access_token'),
+    isAuthenticated: !!localStorage.getItem('user'),
     user: JSON.parse(localStorage.getItem('user')),
   });
-  if (state.isAuthenticated) {
-    // Http.defaults.headers.common.Authorization = `Bearer ${localStorage.getItem('access_token')}`;
-  }
   return stateObj;
 };
 
 const logout = (state) => {
-  localStorage.removeItem('access_token');
   localStorage.removeItem('user');
   const stateObj = Object.assign({}, state, {
     isAuthenticated: false,
@@ -59,6 +54,18 @@ const logout = (state) => {
   });
   return stateObj;
 };
+
+const updateTime = (state) => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  user.active = moment();
+  const stateObj = Object.assign({}, state, {
+    isAuthenticated: !!localStorage.getItem('user'),
+    user
+  });
+
+  localStorage.setItem('user', JSON.stringify(user));
+  return stateObj;
+}
 
 const Auth = (state = initialState, { type, payload = null }) => {
   switch (type) {
@@ -68,6 +75,8 @@ const Auth = (state = initialState, { type, payload = null }) => {
       return checkAuth(state);
     case AUTH_LOGOUT:
       return logout(state);
+    case AUTH_UPDATE_TIME:
+      return updateTime (state)
     default:
       return state;
   }

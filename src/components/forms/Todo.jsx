@@ -41,7 +41,6 @@ function TaskForm ({ submitForm, defaultValues }) {
   };
 
   useEffect(() => {
-    console.log('Reset', defaultValues);
     reset({ defaultValues })
   }, [defaultValues])
 

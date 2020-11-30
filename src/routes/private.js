@@ -13,11 +13,17 @@ import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router';
 import { connect } from 'react-redux';
 
+/**
+ * @file index.js
+ * @author Daniel Felipe Lucumi Marin
+ * @description Redux store.
+ */
+
+
 const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
   <Route
     {...rest}
     render={props => {
-      console.log('isAuthenticated', isAuthenticated);
       return (
         isAuthenticated ? (
             <Component {...props} />

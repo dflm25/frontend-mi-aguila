@@ -13,7 +13,7 @@
 // Redux
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../../redux/actions/global';
+import * as globalActions from '../../redux/actions/global';
 
 // Component
 import Home from './view';
@@ -30,6 +30,7 @@ import Home from './view';
  */
 export const mapStateToProps = (state) => ({
   loading: state.Global.loading,
+  user: state.Auth.user,
 });
 
 /**
@@ -38,7 +39,7 @@ export const mapStateToProps = (state) => ({
  * @returns { object }
  */
 export const mapDispatchToProps = (dispatch) => ({
-  globalAction: bindActionCreators(actions, dispatch),
+  globalAction: bindActionCreators(globalActions, dispatch),
 });
 
 export default connect(

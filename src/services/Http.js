@@ -21,7 +21,7 @@ axios.interceptors.response.use(
   response => response,
   (error) => {
     if (error.response.status === 401) {
-      console.log('Errores');
+      console.log('Errores', error.response.status);
     }
     return Promise.reject(error);
   },

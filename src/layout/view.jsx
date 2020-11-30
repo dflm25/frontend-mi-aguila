@@ -8,13 +8,16 @@
  * All Rights Reserved.
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 // Components
 import SideBar from '../components/layout/SideBar';
 import Header from '../components/layout/Header';
+import ModalSession from '../components/notifications/modalSession';
 
+// Utils
+import { checkSession } from '../utils';
 // Assets
 import '../assets/css/admin.scss';
 
@@ -24,10 +27,29 @@ import '../assets/css/admin.scss';
  * @description Home view page
  */
 
+
 function Admin (props) {
+  const { authAction } = props;
+  const [modalStatus, setModalStatus] = useState(false);
   const { children } = props;
+
+  const closeSession = () => {
+    authAction.authLogout();
+  }
+
+  useEffect(() => {
+    const timer1 = setInterval(()=> {
+      checkSession(modalStatus, setModalStatus, closeSession);
+    }, 10000);
+
+    return () => {
+      clearTimeout(timer1);
+    }
+  })
+  
   return (
     <div className="d-flex" id="wrapper">
+      <ModalSession show={modalStatus} handle={setModalStatus} {...props} />
       <SideBar />
       <div id="page-content-wrapper">
         <Header {...props}/>
@@ -41,6 +63,9 @@ function Admin (props) {
 
 Admin.propTypes = {
   children: PropTypes.object,
+  authAction: PropTypes.shape({
+    authLogout: PropTypes.func,
+  }).isRequired
 }
 
 export default Admin;

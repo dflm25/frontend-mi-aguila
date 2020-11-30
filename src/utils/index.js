@@ -8,6 +8,8 @@
  * All Rights Reserved.
  */
 
+import moment from 'moment';
+
 /**
  * @file index.js
  * @author Daniel Felipe Lucumi Marin
@@ -27,9 +29,38 @@ export const arraySort = (a, b) => {
   return 0;
 }
 
+/**
+ * Generate uuid
+ */
 export const uuidv4 = () => {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
   });
+}
+
+/**
+ * Check session
+ */
+export const checkSession = (modalStatus, setModal, closeSession) => {
+  const session = JSON.parse(localStorage.getItem('user'));
+  if (session) {
+    const now = moment();
+    const diffMins = now.diff(session.active, 'minutes');
+    
+    if (diffMins > 5) {
+      closeSession();
+    } else {
+      return (diffMins > 4 && !modalStatus) ? setModal(true) : false;
+    }
+  } else {
+    return false;
+  }
+}
+
+/**
+ * Get user data
+ */
+export const getUserData = () => {
+  return JSON.parse(localStorage.getItem('user'));
 }

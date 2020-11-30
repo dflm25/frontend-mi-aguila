@@ -38,7 +38,7 @@ function User() {
 
   useEffect(()=> {
     getUserData (setUser);
-  }, []);console.log('users', user);
+  }, []);
 
   return (
     <AdminLayout title="Usuarios">
