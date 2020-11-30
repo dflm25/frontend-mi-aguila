@@ -30,7 +30,7 @@ const schema = yup.object().shape({
 
 const renderError = (error) => (<div className="error">{error}</div>);
 
-function LoginForm ({ submitForm }) {
+function LoginForm ({ submitForm, loading }) {
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
@@ -51,7 +51,13 @@ function LoginForm ({ submitForm }) {
         {errors.password && renderError(errors.password.message)}
       </div>
       <div className="form-group">
-       <button type="submit" className="btn btn-primary btn-block">Login</button>
+        <button 
+          type="submit"
+          className="btn btn-primary btn-block"
+          disabled={loading}
+        >
+          Login
+        </button>
       </div>
     </form>
   );
@@ -59,6 +65,7 @@ function LoginForm ({ submitForm }) {
 
 LoginForm.propTypes = {
   submitForm: PropTypes.func,
+  loading: PropTypes.bool,
 }
 
 export default LoginForm;
