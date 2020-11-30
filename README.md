@@ -2,7 +2,7 @@
 
 [![N|Solid](https://endeavor.org.co/wp-content/uploads/2019/09/Banner-Mi-%C3%81guila-para-PW-01.jpg)](https://nodesource.com/products/nsolid)
 
-This repo contain frontend technical test for Mi aguila. It was develop using React js. 17.01
+This repo contains frontend technical test for Mi aguila. It was developed using React js. 17.01
 Some important packages 
 > Redux
 > React router
@@ -10,6 +10,9 @@ Some important packages
 > Moment.js
 > Sweet Alert
 > React icons
+
+### Requirements
+It was developed using node v10.14.2
 
 ### Installation
 
