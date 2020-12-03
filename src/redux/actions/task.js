@@ -16,10 +16,32 @@ import { CREATE_TASK, REMOVE_TASK, UPDATE_TASK, CLEAR_TASK } from '../constants'
  * @description Redux store.
  */
 
+/**
+ * Create task
+ * @param {*} task  - task object
+ */
 export const createTask = (task) => ({ type: CREATE_TASK, payload: task });
 
-export const updateTask = (id, task) => ({ type: UPDATE_TASK, payload: { id, task } });
+/**
+ * Update task
+ * @param {*} id - task id
+ * @param {*} task - task description
+ */
+export const updateTask = (id, task) => {
+  return { 
+    type: UPDATE_TASK, 
+    payload: { id, task } 
+  }
+}
 
+/**
+ * Remove task
+ * @param {*} id - id task 
+ */
 export const removeTask = (id) => ({ type: REMOVE_TASK, payload: { id } });
 
-export const clearTask = (id) => ({ type: CLEAR_TASK, payload: { id } });
+/**
+ * Clear all task
+ * @param {*} id 
+ */
+export const clearTask = () => ({ type: CLEAR_TASK });

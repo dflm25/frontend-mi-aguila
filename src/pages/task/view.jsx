@@ -20,14 +20,19 @@ import TaskList from '../../components/taskList';
 /**
  * @file index.js
  * @author Daniel Felipe Lucumi Marin
- * @description Home view page
+ * @description Task view page
  */
 
 function User({ taskAction, tasks }) {
   const [ defaultFormData, setDefaultFormData ] = useState({});
-  const { createTask, clearTask } = taskAction;
+  const { createTask, clearTask, updateTask } = taskAction;
   const submitForm = (data) => {
-    createTask(data.description);
+    if (data.id) {
+      updateTask(data.id, data.description);
+    } else {
+      createTask(data.description);
+    }
+    setDefaultFormData({});
   }
 
   // Clear task list
@@ -52,7 +57,7 @@ function User({ taskAction, tasks }) {
         <section className="card container">
           <TaskForm 
             submitForm={submitForm} 
-            defaultValues={defaultFormData}
+            defaultData={defaultFormData}
           />
           <TaskList 
             tasks={tasks} 
@@ -77,6 +82,7 @@ User.propTypes = {
   taskAction: PropTypes.shape({
     createTask: PropTypes.func,
     clearTask: PropTypes.func,
+    updateTask: PropTypes.func,
   }).isRequired,
   loading: PropTypes.bool,
   tasks: PropTypes.array,
