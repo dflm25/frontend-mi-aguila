@@ -8,7 +8,7 @@
  * All Rights Reserved.
  */
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -24,7 +24,7 @@ const schema = yup.object().shape({
 
 const renderError = (error) => (<div className="alert alert-danger text-center">{error}</div>);
 
-function TaskForm ({ submitForm, defaultValues }) {
+function TaskForm ({ submitForm, defaultData }) {
   const { 
     register,
     handleSubmit,
@@ -39,27 +39,31 @@ function TaskForm ({ submitForm, defaultValues }) {
     submitForm(data);
     reset();
   };
-
-  useEffect(() => {
-    reset({ defaultValues })
-  }, [defaultValues])
-
+  
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mt-5">
       {errors.description && renderError(errors.description.message)}
       <div className="input-group mb-5">
-        <input type="text" className="form-control" name="description" ref={register} placeholder="Escribe una tarea..." />
+        <input
+          defaultValue={defaultData.description}
+          type="text" 
+          className="form-control" 
+          name="description" 
+          ref={register} 
+          placeholder="Escribe una tarea..."
+        />
         <div className="input-group-append">
-          <button type="submit" className="btn btn-primary btn-task">Agregar</button>
+          <button type="submit" className="btn btn-primary btn-task">{defaultData.id ? 'Actualizar' : 'Agregar'}</button> 
         </div>
       </div>
+      <input type="hidden" name="id" defaultValue={defaultData.id} ref={register} />
     </form>
   );
 }
 
 TaskForm.propTypes = {
   submitForm: PropTypes.func,
-  defaultValues: PropTypes.object,
+  defaultData: PropTypes.object,
 }
 
 export default TaskForm;

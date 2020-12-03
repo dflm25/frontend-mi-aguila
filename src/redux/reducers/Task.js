@@ -29,9 +29,8 @@ const Task = (state = initialState, { type, payload = null}) => {
         if (item.id === payload.id) {
           const updatedItem = {
             ...item,
-            isComplete: !item.isComplete,
+            description: payload.task,
           };
- 
           return updatedItem;
         }
  
